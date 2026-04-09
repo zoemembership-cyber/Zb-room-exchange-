@@ -10,9 +10,9 @@
   :root {
     --zb-lavender-50:#F0EFFA;--zb-lavender-100:#D4D1F0;--zb-lavender-200:#A9A4E0;
     --zb-lavender-400:#7B74CA;--zb-lavender-600:#5950A8;--zb-lavender-800:#3D3880;--zb-lavender-900:#252060;
-    --zb-green-50:#EDF4E8;--zb-green-100:#C5DFB4;--zb-green-400:#5A9E3A;
-    --zb-green-600:#3D7525;--zb-green-800:#265218;
+    --zb-green-50:#EDF4E8;--zb-green-400:#5A9E3A;--zb-green-600:#3D7525;--zb-green-800:#265218;
     --amber-50:#FAEEDA;--amber-100:#FAC775;--amber-600:#854F0B;--amber-800:#633806;
+    --red-50:#FEE8E8;--red-600:#C0392B;
     --bg:#FAF8F4;--bg2:#F0EBE0;--surface:#FFFFFF;
     --text:#2C1A10;--text2:#5C4033;--text3:#9B8070;
     --border:rgba(44,26,16,0.12);--border2:rgba(44,26,16,0.2);
@@ -33,6 +33,16 @@
   .nav-btn-ghost:hover{background:rgba(255,255,255,0.15);}
   .nav-btn-solid{background:var(--zb-lavender-400);color:white;}
   .nav-btn-solid:hover{background:var(--zb-lavender-200);color:var(--zb-lavender-900);}
+  .admin-nav-btn{padding:7px 14px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:none;background:rgba(255,255,255,0.08);color:var(--zb-lavender-50);font-family:var(--font);transition:all 0.15s;}
+  .admin-nav-btn:hover{background:rgba(255,255,255,0.15);}
+  .admin-nav-btn.active{background:var(--amber-600);color:white;}
+  .admin-bar{display:none;background:#1a1650;border-bottom:2px solid var(--amber-600);padding:10px 2rem;}
+  .admin-bar.visible{display:block;}
+  .admin-bar-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+  .admin-bar-label{font-size:12px;font-weight:700;color:var(--amber-100);letter-spacing:0.06em;text-transform:uppercase;}
+  .admin-bar-hint{font-size:12px;color:var(--zb-lavender-200);flex:1;}
+  .admin-exit-btn{padding:5px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,0.2);background:transparent;color:var(--zb-lavender-100);font-family:var(--font);}
+  .admin-exit-btn:hover{background:rgba(255,255,255,0.1);}
   .hero{background:var(--zb-lavender-900);padding:3.5rem 2rem 4rem;text-align:center;}
   .hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.08em;color:var(--zb-lavender-200);text-transform:uppercase;margin-bottom:12px;}
   .hero-title{font-size:clamp(28px,5vw,44px);font-weight:700;color:white;letter-spacing:-0.02em;line-height:1.1;margin-bottom:14px;}
@@ -45,22 +55,23 @@
   .cta-secondary{background:rgba(255,255,255,0.1);color:white;border:1px solid rgba(255,255,255,0.2)!important;}
   .cta-secondary:hover{background:rgba(255,255,255,0.18);}
   .stats-bar{background:var(--zb-lavender-800);border-bottom:1px solid rgba(255,255,255,0.06);}
-  .stats-inner{max-width:900px;margin:0 auto;padding:0 2rem;display:flex;}
+  .stats-inner{max-width:960px;margin:0 auto;padding:0 2rem;display:flex;}
   .stat-item{flex:1;padding:1rem;text-align:center;border-right:1px solid rgba(255,255,255,0.07);}
   .stat-item:last-child{border-right:none;}
   .stat-n{font-size:22px;font-weight:700;color:var(--zb-lavender-100);}
   .stat-l{font-size:11px;color:var(--zb-lavender-200);margin-top:2px;text-transform:uppercase;letter-spacing:0.05em;}
-  main{max-width:900px;margin:0 auto;padding:2rem;}
+  main{max-width:960px;margin:0 auto;padding:2rem;}
   .section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.25rem;}
   .section-title{font-size:18px;font-weight:600;color:var(--text);}
   .section-count{font-size:13px;color:var(--text3);}
   .filters{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap;}
   .chip{padding:6px 14px;border-radius:100px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--text2);font-family:var(--font);transition:all 0.15s;}
-  .chip:hover{border-color:var(--zb-lavender-400);color:var(--zb-green-600);}
+  .chip:hover{border-color:var(--zb-lavender-400);color:var(--zb-lavender-600);}
   .chip.on{background:var(--zb-lavender-900);color:var(--zb-lavender-50);border-color:var(--zb-lavender-900);}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:2.5rem;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-bottom:2.5rem;}
   .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;transition:border-color 0.15s,transform 0.15s;}
   .card:hover{border-color:var(--zb-lavender-200);transform:translateY(-1px);}
+  .card.admin-mode{border-color:var(--amber-100);}
   .card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px;}
   .room-label{font-size:13px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;}
   .room-num{font-size:28px;font-weight:700;color:var(--text);letter-spacing:-0.02em;line-height:1;margin-top:2px;}
@@ -81,17 +92,27 @@
   .card-btn-primary{background:var(--zb-lavender-900);color:var(--zb-lavender-50);}
   .card-btn-primary:hover{background:var(--zb-lavender-600);}
   .card-btn-disabled{background:var(--bg2);color:var(--text3);cursor:not-allowed;}
-  .req-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:2.5rem;}
+  .card-admin-actions{display:flex;gap:6px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--amber-100);}
+  .aa-btn{flex:1;padding:7px;border-radius:var(--radius);font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:var(--font);transition:all 0.15s;}
+  .aa-approve{background:var(--zb-green-400);color:white;}
+  .aa-approve:hover{background:var(--zb-green-600);}
+  .aa-approve:disabled{background:var(--zb-green-50);color:var(--zb-green-800);cursor:default;}
+  .aa-edit{background:var(--zb-lavender-50);color:var(--zb-lavender-800);}
+  .aa-edit:hover{background:var(--zb-lavender-100);}
+  .aa-delete{background:var(--red-50);color:var(--red-600);}
+  .aa-delete:hover{background:#fcd0d0;}
+  .req-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-bottom:2.5rem;}
   .req-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;transition:border-color 0.15s;}
   .req-card:hover{border-color:var(--zb-lavender-200);}
+  .req-card.admin-mode{border-color:var(--amber-100);}
   .req-name{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px;}
   .req-meta{font-size:12px;color:var(--text3);margin-bottom:10px;}
   .req-note{font-size:13px;color:var(--text2);line-height:1.5;margin-bottom:14px;}
   .req-btn{width:100%;padding:9px;border-radius:var(--radius);font-size:13px;font-weight:600;cursor:pointer;background:transparent;border:1px solid var(--border2);color:var(--text);font-family:var(--font);transition:all 0.15s;}
   .req-btn:hover{background:var(--bg2);}
-  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;align-items:center;justify-content:center;padding:1rem;}
+  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;align-items:center;justify-content:center;padding:1rem;}
   .overlay.open{display:flex;}
-  .panel{background:var(--surface);border-radius:var(--radius-lg);width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,0.18);}
+  .panel{background:var(--surface);border-radius:var(--radius-lg);width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,0.2);}
   .panel-header{padding:1.5rem 1.5rem 0;display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;}
   .panel-title{font-size:18px;font-weight:700;color:var(--text);}
   .panel-close{width:30px;height:30px;border-radius:50%;border:none;background:var(--bg2);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--text2);font-family:var(--font);}
@@ -107,8 +128,6 @@
   .form-submit:hover{background:var(--zb-lavender-600);}
   .form-submit:disabled{opacity:0.55;cursor:not-allowed;}
   .form-note{font-size:12px;color:var(--text3);text-align:center;margin-top:10px;line-height:1.5;}
-  .resident-badge{display:inline-flex;align-items:center;gap:6px;background:var(--zb-lavender-50);border:1px solid var(--zb-lavender-100);border-radius:100px;padding:4px 12px;font-size:12px;font-weight:600;color:var(--zb-lavender-800);margin-bottom:1rem;}
-  .resident-badge svg{width:12px;height:12px;}
   .login-hint{background:var(--amber-50);border:1px solid var(--amber-100);border-radius:var(--radius);padding:10px 14px;font-size:12px;color:var(--amber-600);margin-bottom:1rem;line-height:1.5;}
   .info-box{background:var(--zb-lavender-50);border:1px solid var(--zb-lavender-100);border-radius:var(--radius);padding:10px 14px;font-size:12px;color:var(--zb-lavender-800);margin-bottom:1rem;line-height:1.6;}
   .divider-or{display:flex;align-items:center;gap:10px;margin:1rem 0;}
@@ -117,12 +136,13 @@
   .section-divider{border:none;border-top:1px solid var(--border);margin:1.25rem 0;}
   .section-sub{font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;}
   .spinner{display:none;text-align:center;padding:6px 0;font-size:13px;color:var(--text3);}
+  .resident-badge{display:inline-flex;align-items:center;gap:6px;background:var(--zb-lavender-50);border:1px solid var(--zb-lavender-100);border-radius:100px;padding:4px 12px;font-size:12px;font-weight:600;color:var(--zb-lavender-800);margin-bottom:1rem;}
   .success-panel{text-align:center;padding:2rem;}
   .success-icon{width:52px;height:52px;background:var(--zb-lavender-50);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;}
   .success-icon svg{width:24px;height:24px;}
   .success-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px;}
   .success-sub{font-size:14px;color:var(--text2);line-height:1.6;}
-  .empty{text-align:center;padding:3rem 1rem;color:var(--text3);font-size:14px;}
+  .empty-msg{text-align:center;padding:3rem 1rem;color:var(--text3);font-size:14px;grid-column:1/-1;}
   footer{background:var(--zb-lavender-900);padding:2rem;text-align:center;margin-top:3rem;}
   footer p{font-size:12px;color:var(--zb-lavender-200);line-height:1.8;}
   footer a{color:var(--zb-lavender-100);text-decoration:none;}
@@ -136,37 +156,6 @@
     .stat-item{min-width:90px;}
     .form-row{grid-template-columns:1fr;}
   }
-  .admin-panel{background:var(--surface);border-radius:var(--radius-lg);width:100%;max-width:860px;max-height:92vh;overflow-y:auto;box-shadow:0 24px 60px rgba(0,0,0,0.22);}
-  .admin-header{background:var(--zb-lavender-900);padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
-  .admin-header-title{font-size:16px;font-weight:700;color:white;}
-  .admin-header-sub{font-size:12px;color:var(--zb-lavender-200);margin-top:2px;}
-  .admin-close{width:30px;height:30px;border-radius:50%;border:none;background:rgba(255,255,255,0.12);cursor:pointer;color:white;font-size:16px;font-family:var(--font);}
-  .admin-body{padding:1.5rem;}
-  .admin-tabs{display:flex;gap:6px;margin-bottom:1.25rem;border-bottom:1px solid var(--border);padding-bottom:1rem;}
-  .admin-tab{padding:6px 16px;border-radius:100px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border2);background:transparent;color:var(--text2);font-family:var(--font);transition:all 0.15s;}
-  .admin-tab.on{background:var(--zb-lavender-900);color:white;border-color:var(--zb-lavender-900);}
-  .admin-section{display:none;}
-  .admin-section.on{display:block;}
-  .admin-row{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start;}
-  .admin-row:hover{border-color:var(--zb-lavender-200);}
-  .admin-info{flex:1;min-width:0;}
-  .admin-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:3px;}
-  .admin-meta{font-size:12px;color:var(--text3);line-height:1.6;}
-  .admin-status{font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
-  .status-pending{background:var(--amber-50);color:var(--amber-800);}
-  .status-approved{background:var(--zb-green-50);color:var(--zb-green-800);}
-  .status-active{background:var(--zb-lavender-50);color:var(--zb-lavender-800);}
-  .status-deleted{background:#F1EFE8;color:#888;}
-  .admin-actions{display:flex;flex-direction:column;gap:6px;flex-shrink:0;}
-  .admin-btn{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:var(--font);transition:all 0.15s;white-space:nowrap;}
-  .admin-btn-approve{background:var(--zb-green-400);color:white;}
-  .admin-btn-approve:hover{background:var(--zb-green-600);}
-  .admin-btn-delete{background:#F7C1C1;color:#791F1F;}
-  .admin-btn-delete:hover{background:#F09595;}
-  .admin-empty{text-align:center;padding:2rem;color:var(--text3);font-size:14px;}
-  .admin-loading{text-align:center;padding:2rem;color:var(--text3);font-size:13px;}
-  .admin-nav-btn{padding:7px 14px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:none;background:rgba(255,255,255,0.08);color:var(--zb-lavender-50);font-family:var(--font);transition:all 0.15s;}
-  .admin-nav-btn:hover{background:rgba(255,255,255,0.15);}
 </style>
 </head>
 <body>
@@ -182,9 +171,17 @@
   <div class="nav-right">
     <button class="nav-btn nav-btn-ghost" onclick="openPanel('search-panel')">Find a Room</button>
     <button class="nav-btn nav-btn-solid" onclick="openPanel('login-panel')">I'm a ZB Resident</button>
-    <button class="admin-nav-btn" onclick="openPanel('admin-login-panel')">Admin</button>
+    <button class="admin-nav-btn" id="admin-nav-btn" onclick="toggleAdmin()">Admin</button>
   </div>
 </nav>
+
+<div class="admin-bar" id="admin-bar">
+  <div class="admin-bar-inner">
+    <span class="admin-bar-label">&#9679; Admin Mode</span>
+    <span class="admin-bar-hint">All listings visible. Approve, edit, or delete directly from the cards.</span>
+    <button class="admin-exit-btn" onclick="exitAdmin()">Exit admin</button>
+  </div>
+</div>
 
 <div class="hero">
   <div class="hero-eyebrow">Exchanges · Sublets · Seasonal Stays</div>
@@ -198,9 +195,9 @@
 
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat-item"><div class="stat-n" id="sn-open">6</div><div class="stat-l">Active rooms</div></div>
-    <div class="stat-item"><div class="stat-n" id="sn-req">3</div><div class="stat-l">People searching</div></div>
-    <div class="stat-item"><div class="stat-n" id="sn-match">8</div><div class="stat-l">Matches this year</div></div>
+    <div class="stat-item"><div class="stat-n" id="sn-open">—</div><div class="stat-l">Active rooms</div></div>
+    <div class="stat-item"><div class="stat-n" id="sn-req">—</div><div class="stat-l">People searching</div></div>
+    <div class="stat-item"><div class="stat-n" id="sn-pending">—</div><div class="stat-l">Pending review</div></div>
     <div class="stat-item"><div class="stat-n">39</div><div class="stat-l">ZB Residents</div></div>
   </div>
 </div>
@@ -208,23 +205,21 @@
 <main>
   <div class="section-header">
     <div class="section-title">Available Rooms</div>
-    <div class="section-count" id="listing-count">6 rooms</div>
+    <div class="section-count" id="listing-count"></div>
   </div>
   <div class="filters">
     <button class="chip on" onclick="filterListings(this,'all')">All</button>
     <button class="chip" onclick="filterListings(this,'single')">Single</button>
     <button class="chip" onclick="filterListings(this,'double')">Double</button>
     <button class="chip" onclick="filterListings(this,'triple')">Triple / Quad</button>
-    <button class="chip" onclick="filterListings(this,'summer')">Summer 2025</button>
-    <button class="chip" onclick="filterListings(this,'fall')">Fall 2025</button>
   </div>
-  <div class="grid" id="listing-grid"></div>
+  <div class="grid" id="listing-grid"><div class="empty-msg">Loading rooms...</div></div>
 
   <div class="section-header">
     <div class="section-title">People Looking for a Room</div>
-    <div class="section-count" id="req-count">3 active searches</div>
+    <div class="section-count" id="req-count"></div>
   </div>
-  <div class="req-grid" id="req-grid"></div>
+  <div class="req-grid" id="req-grid"><div class="empty-msg">Loading searches...</div></div>
 </main>
 
 <footer>
@@ -241,7 +236,7 @@
       <button class="panel-close" onclick="closePanel('contact-panel')">&#x2715;</button>
     </div>
     <div class="panel-body">
-      <div class="info-box">Your request will be sent automatically to the House President <strong>and</strong> to the resident who listed this room.</div>
+      <div class="info-box">Your request will be sent to the House President and the resident listing this room.</div>
       <div class="form-group"><label class="form-label">Full name</label><input class="form-input" id="c-name" type="text" placeholder="First Last"></div>
       <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="c-email" type="email" placeholder="you@email.com"></div>
       <div class="form-group"><label class="form-label">Phone (optional)</label><input class="form-input" id="c-phone" type="tel" placeholder="+1 (608) ..."></div>
@@ -255,10 +250,10 @@
           <option>Other</option>
         </select>
       </div>
-      <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" id="c-msg" placeholder="Introduce yourself, confirm the dates you need, and any relevant details..."></textarea></div>
-      <div class="spinner" id="c-spinner">Sending your request...</div>
+      <div class="form-group"><label class="form-label">Message</label><textarea class="form-input" id="c-msg" placeholder="Introduce yourself, confirm dates, any relevant details..."></textarea></div>
+      <div class="spinner" id="c-spinner">Sending...</div>
       <button class="form-submit" id="c-btn" onclick="submitContact()">Send request</button>
-      <p class="form-note">By submitting, you agree your information will be shared with the ZB House President and the room's resident to coordinate the sublet.</p>
+      <p class="form-note">Your info will be shared with the ZB House President and the room's resident.</p>
     </div>
   </div>
 </div>
@@ -271,7 +266,7 @@
       <button class="panel-close" onclick="closePanel('search-panel')">&#x2715;</button>
     </div>
     <div class="panel-body">
-      <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;line-height:1.6;">Your search profile will be visible to ZB residents who have their room available.</p>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:1rem;line-height:1.6;">Your search profile will be visible to ZB residents with available rooms.</p>
       <div class="form-group"><label class="form-label">Full name</label><input class="form-input" id="s-name" type="text" placeholder="First Last"></div>
       <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="s-email" type="email" placeholder="you@email.com"></div>
       <div class="form-row">
@@ -282,16 +277,16 @@
         <div class="form-group"><label class="form-label">Room type</label>
           <select class="form-input" id="s-type"><option>Single</option><option>Double</option><option>Any</option></select>
         </div>
-        <div class="form-group"><label class="form-label">Max budget/month</label><input class="form-input" id="s-budget" type="number" placeholder="$ USD"></div>
+        <div class="form-group"><label class="form-label">Max budget/mo</label><input class="form-input" id="s-budget" type="number" placeholder="$ USD"></div>
       </div>
-      <div class="form-group"><label class="form-label">Tell us about yourself</label><textarea class="form-input" id="s-note" placeholder="Exchange program, home university, special needs like pets, natural light, etc."></textarea></div>
+      <div class="form-group"><label class="form-label">About you</label><textarea class="form-input" id="s-note" placeholder="Exchange program, home university, any special needs..."></textarea></div>
       <div class="spinner" id="s-spinner">Sending...</div>
       <button class="form-submit" id="s-btn" onclick="submitSearch()">Post my search</button>
     </div>
   </div>
 </div>
 
-<!-- RESIDENT LOGIN PANEL -->
+<!-- RESIDENT LOGIN -->
 <div class="overlay" id="login-panel">
   <div class="panel">
     <div class="panel-header">
@@ -299,29 +294,29 @@
       <button class="panel-close" onclick="closePanel('login-panel')">&#x2715;</button>
     </div>
     <div class="panel-body">
-      <div class="login-hint"><strong>For ZB residents only.</strong> Enter your room number and the code shared by the House President to list your room.</div>
+      <div class="login-hint"><strong>For ZB residents only.</strong> Enter your room and the House President code to list your room.</div>
       <div class="form-group"><label class="form-label">Room number</label>
         <select class="form-input" id="l-room">
           <option value="">Select your room...</option>
-          <option>12 &#8212; Single (H. President)</option>
-          <option>21 &#8212; Double</option><option>22 &#8212; Double</option><option>23 &#8212; Double</option>
-          <option>24 &#8212; Double</option><option>25 &#8212; Double</option><option>26 &#8212; Double</option>
-          <option>27 &#8212; Single</option><option>28 &#8212; Double</option><option>29 &#8212; Single</option>
-          <option>31 &#8212; Double</option><option>32 &#8212; Double</option><option>33 &#8212; Double</option>
-          <option>34 &#8212; Double</option><option>35 &#8212; Double</option><option>36 &#8212; Single</option>
-          <option>37 &#8212; Single</option><option>38 &#8212; Double</option><option>39 &#8212; Single</option>
-          <option>42 &#8212; Triple</option><option>43 &#8212; Quad</option><option>44 &#8212; Triple</option>
+          <option>12 — Single (H. President)</option>
+          <option>21 — Double</option><option>22 — Double</option><option>23 — Double</option>
+          <option>24 — Double</option><option>25 — Double</option><option>26 — Double</option>
+          <option>27 — Single</option><option>28 — Double</option><option>29 — Single</option>
+          <option>31 — Double</option><option>32 — Double</option><option>33 — Double</option>
+          <option>34 — Double</option><option>35 — Double</option><option>36 — Single</option>
+          <option>37 — Single</option><option>38 — Double</option><option>39 — Single</option>
+          <option>42 — Triple</option><option>43 — Quad</option><option>44 — Triple</option>
         </select>
       </div>
       <div class="form-group"><label class="form-label">Resident code</label><input class="form-input" id="l-code" type="password" placeholder="ZB code"></div>
       <button class="form-submit" onclick="residentLogin()">Sign in</button>
       <div class="divider-or"><span>Don't have the code?</span></div>
-      <p class="form-note">Contact the House President: <a href="mailto:zoemembership@madisoncommunity.coop" style="color:var(--zb-green-600);">zoemembership@madisoncommunity.coop</a></p>
+      <p class="form-note">Contact: <a href="mailto:zoemembership@madisoncommunity.coop" style="color:var(--zb-green-600);">zoemembership@madisoncommunity.coop</a></p>
     </div>
   </div>
 </div>
 
-<!-- RESIDENT POST PANEL -->
+<!-- RESIDENT POST -->
 <div class="overlay" id="post-panel">
   <div class="panel">
     <div class="panel-header">
@@ -329,15 +324,12 @@
       <button class="panel-close" onclick="closePanel('post-panel')">&#x2715;</button>
     </div>
     <div class="panel-body">
-      <div class="resident-badge">
-        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1L2 3v3c0 2.5 2 4.5 4 5 2-0.5 4-2.5 4-5V3L6 1z"/></svg>
-        Verified Resident &middot; Room <span id="post-room-label" style="margin-left:3px;"></span>
-      </div>
-      <div class="section-sub">Your contact info for notifications</div>
-      <div class="info-box">You will receive an automatic email whenever someone requests your room.</div>
+      <div class="resident-badge">&#10003; Verified Resident &middot; Room <span id="post-room-label" style="margin-left:3px;"></span></div>
+      <div class="section-sub">Your contact info</div>
+      <div class="info-box">You'll get an email whenever someone requests your room.</div>
       <div class="form-group"><label class="form-label">Your name</label><input class="form-input" id="p-res-name" type="text" placeholder="First Last"></div>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">Notification email</label><input class="form-input" id="p-res-email" type="email" placeholder="you@wisc.edu"></div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" id="p-res-email" type="email" placeholder="you@wisc.edu"></div>
         <div class="form-group"><label class="form-label">Phone (optional)</label><input class="form-input" id="p-res-phone" type="tel" placeholder="+1 (608) ..."></div>
       </div>
       <hr class="section-divider">
@@ -346,7 +338,7 @@
         <div class="form-group"><label class="form-label">Available from</label><input class="form-input" id="p-from" type="date"></div>
         <div class="form-group"><label class="form-label">Until</label><input class="form-input" id="p-to" type="date"></div>
       </div>
-      <div class="form-group"><label class="form-label">Monthly price (USD)</label><input class="form-input" id="p-price" type="number" placeholder="e.g. 650"></div>
+      <div class="form-group"><label class="form-label">Monthly price (USD)</label><input class="form-input" id="p-price" type="number" placeholder="e.g. 540"></div>
       <div class="form-group"><label class="form-label">Room features</label>
         <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;" id="tag-picker">
           <button class="chip" onclick="this.classList.toggle('on')">Natural light</button>
@@ -358,32 +350,15 @@
           <button class="chip" onclick="this.classList.toggle('on')">Large closet</button>
         </div>
       </div>
-      <div class="form-group"><label class="form-label">Additional notes or conditions</label><textarea class="form-input" id="p-notes" placeholder="Any important details: restrictions, house rules, what's included in the price, etc."></textarea></div>
-      <div class="spinner" id="p-spinner">Submitting your listing...</div>
-      <button class="form-submit" id="p-btn" onclick="submitPost()">Publish listing</button>
-      <p class="form-note">Your listing will be reviewed by the House President before going live. You'll be notified once it's approved.</p>
+      <div class="form-group"><label class="form-label">Additional notes</label><textarea class="form-input" id="p-notes" placeholder="Any details, rules, what's included, etc."></textarea></div>
+      <div class="spinner" id="p-spinner">Submitting...</div>
+      <button class="form-submit" id="p-btn" onclick="submitPost()">Submit listing for review</button>
+      <p class="form-note">The House President will approve it before it goes live.</p>
     </div>
   </div>
 </div>
 
-<!-- SUCCESS PANEL -->
-<div class="overlay" id="success-panel">
-  <div class="panel">
-    <div class="panel-header" style="justify-content:flex-end;padding-bottom:0;">
-      <button class="panel-close" onclick="closePanel('success-panel')">&#x2715;</button>
-    </div>
-    <div class="panel-body success-panel">
-      <div class="success-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#5950A8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-      </div>
-      <div class="success-title" id="success-title">Done!</div>
-      <div class="success-sub" id="success-sub">Your information was submitted successfully.</div>
-      <button class="form-submit" style="margin-top:1.5rem;max-width:200px;margin-left:auto;margin-right:auto;display:block;" onclick="closePanel('success-panel')">Close</button>
-    </div>
-  </div>
-</div>
-
-<!-- ADMIN LOGIN PANEL -->
+<!-- ADMIN LOGIN -->
 <div class="overlay" id="admin-login-panel">
   <div class="panel">
     <div class="panel-header">
@@ -391,43 +366,53 @@
       <button class="panel-close" onclick="closePanel('admin-login-panel')">&#x2715;</button>
     </div>
     <div class="panel-body">
-      <div class="login-hint"><strong>House President only.</strong> Enter the admin password to manage listings and requests.</div>
-      <div class="form-group"><label class="form-label">Admin password</label><input class="form-input" id="admin-pwd" type="password" placeholder="Admin password" onkeydown="if(event.key==='Enter')adminLogin()"></div>
+      <div class="login-hint"><strong>House President only.</strong></div>
+      <div class="form-group"><label class="form-label">Admin password</label>
+        <input class="form-input" id="admin-pwd" type="password" placeholder="Password" onkeydown="if(event.key==='Enter')adminLogin()">
+      </div>
       <button class="form-submit" onclick="adminLogin()">Sign in as admin</button>
     </div>
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
-<div class="overlay" id="admin-panel">
-  <div class="admin-panel">
-    <div class="admin-header">
-      <div>
-        <div class="admin-header-title">ZB Room Exchange &#8212; Admin</div>
-        <div class="admin-header-sub">Manage listings and requests</div>
-      </div>
-      <button class="admin-close" onclick="closePanel('admin-panel')">&#x2715;</button>
+<!-- EDIT PANEL -->
+<div class="overlay" id="edit-panel">
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title">Edit Listing</div>
+      <button class="panel-close" onclick="closePanel('edit-panel')">&#x2715;</button>
     </div>
-    <div class="admin-body">
-      <div class="admin-tabs">
-        <button class="admin-tab on" onclick="adminTab(this,'admin-listings')">Room Listings</button>
-        <button class="admin-tab" onclick="adminTab(this,'admin-requests')">Room Requests</button>
+    <div class="panel-body">
+      <input type="hidden" id="edit-id">
+      <div class="form-group"><label class="form-label">Room</label><input class="form-input" id="edit-room" readonly style="background:var(--bg2);"></div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">From</label><input class="form-input" id="edit-from" type="text"></div>
+        <div class="form-group"><label class="form-label">Until</label><input class="form-input" id="edit-to" type="text"></div>
       </div>
-      <div class="admin-section on" id="admin-listings">
-        <div class="admin-loading" id="admin-listings-loading">Loading listings...</div>
-        <div id="admin-listings-body"></div>
-      </div>
-      <div class="admin-section" id="admin-requests">
-        <div class="admin-loading" id="admin-requests-loading">Loading requests...</div>
-        <div id="admin-requests-body"></div>
-      </div>
+      <div class="form-group"><label class="form-label">Price (e.g. $540)</label><input class="form-input" id="edit-price" type="text"></div>
+      <div class="form-group"><label class="form-label">Features (comma-separated)</label><input class="form-input" id="edit-features" type="text"></div>
+      <div class="form-group"><label class="form-label">Notes</label><textarea class="form-input" id="edit-notes"></textarea></div>
+      <div class="spinner" id="edit-spinner">Saving...</div>
+      <button class="form-submit" onclick="saveEdit()">Save changes</button>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════
-     ALL JAVASCRIPT — single <script> block, no duplicates
-     ═══════════════════════════════════════════════════════════════ -->
+<!-- SUCCESS -->
+<div class="overlay" id="success-panel">
+  <div class="panel">
+    <div class="panel-header" style="justify-content:flex-end;padding-bottom:0;">
+      <button class="panel-close" onclick="closePanel('success-panel')">&#x2715;</button>
+    </div>
+    <div class="panel-body success-panel">
+      <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5950A8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div class="success-title" id="success-title">Done!</div>
+      <div class="success-sub" id="success-sub"></div>
+      <button class="form-submit" style="margin-top:1.5rem;max-width:200px;margin-left:auto;margin-right:auto;display:block;" onclick="closePanel('success-panel')">Close</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ─── CONFIG ───────────────────────────────────────────────────────
 const EJS_PUBLIC_KEY  = 'XfIK-gvR7WsT85zlo';
@@ -435,63 +420,22 @@ const EJS_SERVICE_ID  = 'service_t13kkkc';
 const EJS_TPL_REQUEST = 'template_qst045k';
 const EJS_TPL_LISTING = 'template_o0knaeo';
 const HP_EMAIL        = 'zoemembership@madisoncommunity.coop';
-const SHEET_URL       = 'https://script.google.com/macros/s/AKfycby-usIQXP8pVbBDecrT25-0KfJZWwFWAGCupOAuJrygAwiOs0Esps6MllU_RK-2WMv_3Q/exec';
+const SHEET_URL       = 'https://script.google.com/macros/s/AKfycby3VHeZmXn7I3_W6xbJY3rRA7niX_AWDJhvyR8yuehbKnnLkt5LHABCqzk-kHkcwpDaGw/exec';
 const RESIDENT_CODE   = 'ZOEBABY';
 const ADMIN_CODE      = 'BAYLISSADMIN';
 
-const EMAILJS_READY = EJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY';
-if (EMAILJS_READY) emailjs.init({ publicKey: EJS_PUBLIC_KEY });
+if (EJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY') emailjs.init({ publicKey: EJS_PUBLIC_KEY });
 
 // ─── STATE ────────────────────────────────────────────────────────
-let currentResidentEmail = '';
-let currentContactTitle  = '';
-let currentRoomInfo      = '';
+var isAdmin = false;
+var allListings = [];
+var allRequests = [];
+var currentFilter = 'all';
+var currentResidentEmail = '';
+var currentContactTitle = '';
+var currentRoomInfo = '';
 
-const listings = [
-  { id:1, room:'27', type:'Single', season:'summer', from:'2025-05-15', to:'2025-08-20', price:620, tags:['Natural light','2nd floor','Very quiet'], poster:'A.L.', resEmail:'', status:'open' },
-  { id:2, room:'21', type:'Double', season:'summer', from:'2025-06-01', to:'2025-07-31', price:480, tags:['Pet-friendly','Quiet'],                  poster:'C.M.', resEmail:'', status:'open' },
-  { id:3, room:'36', type:'Single', season:'summer', from:'2025-05-20', to:'2025-08-10', price:640, tags:['Upper floor','Natural light'],            poster:'T.R.', resEmail:'', status:'open' },
-  { id:4, room:'23', type:'Double', season:'fall',   from:'2025-08-25', to:'2025-12-15', price:510, tags:['Quiet','Near bathroom'],                  poster:'S.K.', resEmail:'', status:'pending' },
-  { id:5, room:'42', type:'Triple', season:'summer', from:'2025-05-15', to:'2025-08-31', price:390, tags:['Pet-friendly'],                           poster:'M.V.', resEmail:'', status:'open' },
-  { id:6, room:'29', type:'Single', season:'fall',   from:'2025-08-25', to:'2025-12-20', price:660, tags:['Natural light','Large closet'],            poster:'B.O.', resEmail:'', status:'open' },
-];
-
-const seekers = [
-  { name:'Ji-ho Park',  from:'May 15', to:'Aug 18', type:'Single', budget:700, exchange:'UW-Madison Exchange',   note:'Looking for a quiet space to write my thesis. Very neat and respectful.' },
-  { name:'Luis Torres', from:'Jun 1',  to:'Jul 31', type:'Any',    budget:550, exchange:'Visiting Researcher',   note:'Researcher for 2 months. Very flexible with room type.' },
-  { name:'Anna M\u00fcller', from:'Aug 20', to:'Dec 15', type:'Double', budget:600, exchange:'Exchange from Germany', note:'Fall exchange student, seeking a cooperative community experience. Speaks Spanish and English.' },
-];
-
-// ─── HELPERS ──────────────────────────────────────────────────────
-function fmtDate(d) {
-  return new Date(d + 'T12:00:00').toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
-}
-function calSVG() {
-  return '<svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="11" height="10" rx="2"/><line x1="4" y1="1" x2="4" y2="3"/><line x1="9" y1="1" x2="9" y2="3"/><line x1="1" y1="6" x2="12" y2="6"/></svg>';
-}
-function openPanel(id)  { document.getElementById(id).classList.add('open'); }
-function closePanel(id) { document.getElementById(id).classList.remove('open'); }
-function showSuccess(title, sub) {
-  document.getElementById('success-title').textContent = title;
-  document.getElementById('success-sub').textContent   = sub;
-  openPanel('success-panel');
-}
-function setLoading(btnId, spinnerId, on) {
-  document.getElementById(btnId).disabled          = on;
-  document.getElementById(spinnerId).style.display = on ? 'block' : 'none';
-}
-
-// ─── SHEET (POST = no-cors, GET = cors with graceful fallback) ────
-async function logToSheet(payload) {
-  try {
-    await fetch(SHEET_URL, {
-      method:'POST', mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(payload)
-    });
-  } catch(e) { console.error('Sheet sync error:', e); }
-}
-
+// ─── SHEET ────────────────────────────────────────────────────────
 async function fetchSheet(params) {
   try {
     var res = await fetch(SHEET_URL + '?' + params);
@@ -503,271 +447,298 @@ async function fetchSheet(params) {
   }
 }
 
-// ─── EMAIL ────────────────────────────────────────────────────────
-async function sendEmail(tpl, params) {
-  if (!EMAILJS_READY) return;
-  try { await emailjs.send(EJS_SERVICE_ID, tpl, params); }
-  catch(e) { console.error('EmailJS error:', e); }
+async function logToSheet(payload) {
+  try {
+    await fetch(SHEET_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+  } catch(e) { console.error('Sheet sync error:', e); }
+}
+
+// ─── LOAD ─────────────────────────────────────────────────────────
+async function loadData() {
+  var data = await fetchSheet('action=read');
+  if (!data) {
+    document.getElementById('listing-grid').innerHTML = '<div class="empty-msg">Could not load data. Check Apps Script deployment (Who has access: Anyone).</div>';
+    document.getElementById('req-grid').innerHTML = '';
+    return;
+  }
+  allListings = data.listings || [];
+  allRequests = data.requests || [];
+  renderListings();
+  renderRequests();
+  updateStats();
+}
+
+function updateStats() {
+  var approved = allListings.filter(function(l){ return l.status === 'Approved'; }).length;
+  var active   = allRequests.filter(function(r){ return r.status === 'Active'; }).length;
+  var pending  = allListings.filter(function(l){ return l.status === 'Pending'; }).length;
+  document.getElementById('sn-open').textContent    = approved;
+  document.getElementById('sn-req').textContent     = active;
+  document.getElementById('sn-pending').textContent = pending;
 }
 
 // ─── RENDER LISTINGS ──────────────────────────────────────────────
-function renderListings(filter) {
-  filter = filter || 'all';
-  var grid     = document.getElementById('listing-grid');
-  var filtered = listings.filter(function(l) {
-    if (filter === 'single') return l.type === 'Single';
-    if (filter === 'double') return l.type === 'Double';
-    if (filter === 'triple') return l.type === 'Triple' || l.type === 'Quad';
-    if (filter === 'summer') return l.season === 'summer';
-    if (filter === 'fall')   return l.season === 'fall';
+function renderListings() {
+  var grid = document.getElementById('listing-grid');
+  var singles = ['12','27','29','36','37','39'];
+  var doubles = ['21','22','23','24','25','26','28','31','32','33','34','35','38'];
+  var triples = ['42','43','44'];
+
+  var show = allListings.filter(function(l) {
+    if (l.status === 'Deleted') return false;
+    if (!isAdmin && l.status !== 'Approved') return false;
+    var r = String(l.room || '');
+    if (currentFilter === 'single') return singles.indexOf(r) !== -1;
+    if (currentFilter === 'double') return doubles.indexOf(r) !== -1;
+    if (currentFilter === 'triple') return triples.indexOf(r) !== -1;
     return true;
   });
-  document.getElementById('listing-count').textContent = filtered.length + ' room' + (filtered.length !== 1 ? 's' : '');
-  if (!filtered.length) { grid.innerHTML = '<div class="empty" style="grid-column:1/-1">No rooms match this filter right now.</div>'; return; }
-  grid.innerHTML = filtered.map(function(l) {
-    var btn = l.status === 'open'
-      ? '<button class="card-btn card-btn-primary" onclick="openContact(\'Room ' + l.room + ' \u2014 ' + fmtDate(l.from) + ' to ' + fmtDate(l.to) + '\', \'' + l.resEmail + '\')">Request this room</button>'
-      : '<button class="card-btn card-btn-disabled" disabled>Pending approval</button>';
-    return '<div class="card"><div class="card-top"><div><div class="room-label">Room</div><div class="room-num">' + l.room + '</div></div>'
-      + '<span class="badge ' + (l.status === 'open' ? 'badge-open' : 'badge-pending') + '">' + (l.status === 'open' ? 'Available' : 'Under Review') + '</span></div>'
-      + '<hr class="divider-card">'
-      + '<div class="card-dates">' + calSVG() + ' ' + fmtDate(l.from) + ' \u2014 ' + fmtDate(l.to) + '</div>'
-      + '<div class="card-price">$' + l.price.toLocaleString() + ' <span>/ mo \u00b7 ' + l.type + '</span></div>'
-      + '<div class="card-tags">' + l.tags.map(function(t) { return '<span class="tag">' + t + '</span>'; }).join('') + '</div>'
-      + '<div class="poster-row"><div class="avatar">' + l.poster + '</div><span class="poster-name">Listed by ' + l.poster + ' \u00b7 ZB Resident</span></div>'
-      + btn + '</div>';
-  }).join('');
-}
 
-function renderSeekers() {
-  var grid = document.getElementById('req-grid');
-  document.getElementById('req-count').textContent = seekers.length + ' active search' + (seekers.length !== 1 ? 'es' : '');
-  grid.innerHTML = seekers.map(function(s) {
-    var initials = s.name.split(' ').map(function(n) { return n[0]; }).join('');
-    return '<div class="req-card">'
-      + '<div class="poster-row" style="margin-bottom:6px;"><div class="avatar">' + initials + '</div>'
-      + '<div><div class="req-name">' + s.name + '</div><div class="req-meta">' + s.exchange + ' \u00b7 ' + s.type + ' \u00b7 Max $' + s.budget + '/mo</div></div></div>'
-      + '<div class="card-dates" style="margin-bottom:8px;">' + calSVG() + ' ' + s.from + ' \u2014 ' + s.to + '</div>'
-      + '<div class="req-note">' + s.note + '</div>'
-      + '<button class="req-btn" onclick="openContact(\'Respond to ' + s.name.replace(/'/g, "\\'") + '&#39;s search\', \'\')">I have a room available</button>'
+  document.getElementById('listing-count').textContent = show.length + ' room' + (show.length !== 1 ? 's' : '') + (isAdmin ? ' — admin view' : '');
+
+  if (!show.length) {
+    grid.innerHTML = '<div class="empty-msg">' + (isAdmin ? 'No listings in sheet yet.' : 'No rooms available right now — check back soon.') + '</div>';
+    return;
+  }
+
+  grid.innerHTML = show.map(function(l) {
+    var tags = (l.features || '').split(',').map(function(t){ return t.trim(); }).filter(Boolean);
+    var initials = (l.resident_name || 'ZB').split(' ').map(function(n){ return n[0]; }).join('').substring(0,2).toUpperCase();
+    var approved = l.status === 'Approved';
+
+    return '<div class="card' + (isAdmin ? ' admin-mode' : '') + '" id="card-' + l.id + '">'
+      + '<div class="card-top"><div><div class="room-label">Room</div><div class="room-num">' + (l.room||'?') + '</div></div>'
+      + '<span class="badge ' + (approved ? 'badge-open' : 'badge-pending') + '">' + (approved ? 'Available' : (l.status||'Pending')) + '</span></div>'
+      + '<hr class="divider-card">'
+      + '<div class="card-dates">' + calSVG() + ' ' + fmtDate(l.from) + (l.to ? ' &mdash; ' + fmtDate(l.to) : '') + '</div>'
+      + '<div class="card-price">$' + (l.price||'—') + ' <span>/ mo</span></div>'
+      + (tags.length ? '<div class="card-tags">' + tags.map(function(t){ return '<span class="tag">'+t+'</span>'; }).join('') + '</div>' : '')
+      + '<div class="poster-row"><div class="avatar">' + initials + '</div><span class="poster-name">Listed by ' + (l.resident_name||'ZB Resident') + '</span></div>'
+      + (isAdmin ? '<div style="font-size:11px;color:var(--text3);margin-bottom:8px;line-height:1.6;">' + (l.resident_email||'') + (l.resident_phone ? ' &middot; ' + l.resident_phone : '') + (l.notes ? '<br><em>Notes: ' + l.notes + '</em>' : '') + '</div>' : '')
+      + (approved ? '<button class="card-btn card-btn-primary" onclick="openContact(\'Room ' + (l.room||'') + '\', \'' + (l.resident_email||'').replace(/'/g,"\\'") + '\')">Request this room</button>'
+                  : '<button class="card-btn card-btn-disabled" disabled>Pending approval</button>')
+      + (isAdmin ? '<div class="card-admin-actions">'
+          + (approved
+              ? '<button class="aa-btn aa-approve" disabled>&#10003; Approved</button>'
+              : '<button class="aa-btn aa-approve" onclick="adminApprove(\'' + l.id + '\')">&#10003; Approve</button>')
+          + '<button class="aa-btn aa-edit" onclick="openEdit(\'' + l.id + '\')">&#9998; Edit</button>'
+          + '<button class="aa-btn aa-delete" onclick="adminDelete(\'' + l.id + '\',\'listing\')">&#128465; Delete</button>'
+          + '</div>' : '')
       + '</div>';
   }).join('');
 }
 
-function filterListings(el, val) {
-  document.querySelectorAll('.filters .chip').forEach(function(c) { c.classList.remove('on'); });
-  el.classList.add('on');
-  renderListings(val);
+// ─── RENDER REQUESTS ──────────────────────────────────────────────
+function renderRequests() {
+  var grid = document.getElementById('req-grid');
+  var show = allRequests.filter(function(r){ return r.status !== 'Deleted'; });
+  document.getElementById('req-count').textContent = show.length + ' active search' + (show.length !== 1 ? 'es' : '');
+
+  if (!show.length) {
+    grid.innerHTML = '<div class="empty-msg">No searches posted yet.</div>';
+    return;
+  }
+
+  grid.innerHTML = show.map(function(r) {
+    var initials = (r.requester_name || 'ZB').split(' ').map(function(n){ return n[0]; }).join('').substring(0,2).toUpperCase();
+    return '<div class="req-card' + (isAdmin ? ' admin-mode' : '') + '" id="card-' + r.id + '">'
+      + '<div class="poster-row" style="margin-bottom:6px;"><div class="avatar">' + initials + '</div>'
+      + '<div><div class="req-name">' + (r.requester_name||'Anonymous') + '</div>'
+      + '<div class="req-meta">' + (r.requester_type||'') + '</div></div></div>'
+      + '<div class="card-dates" style="margin-bottom:8px;">' + calSVG() + ' ' + (r.room_info||'—') + '</div>'
+      + '<div class="req-note">' + (r.message||'No message provided.') + '</div>'
+      + (isAdmin ? '<div style="font-size:11px;color:var(--text3);margin-bottom:10px;">' + (r.requester_email||'') + (r.requester_phone ? ' &middot; ' + r.requester_phone : '') + '<br>' + (r.timestamp||'') + '</div>' : '')
+      + (!isAdmin ? '<button class="req-btn" onclick="openContact(\'I have a room for ' + (r.requester_name||'').replace(/'/g,"\\'") + '\', \'\')">I have a room available</button>' : '')
+      + (isAdmin ? '<div class="card-admin-actions"><button class="aa-btn aa-delete" style="width:100%;flex:none;" onclick="adminDelete(\'' + r.id + '\',\'request\')">&#128465; Delete this search</button></div>' : '')
+      + '</div>';
+  }).join('');
 }
 
+// ─── FILTER ───────────────────────────────────────────────────────
+function filterListings(el, val) {
+  currentFilter = val;
+  document.querySelectorAll('.filters .chip').forEach(function(c){ c.classList.remove('on'); });
+  el.classList.add('on');
+  renderListings();
+}
+
+// ─── ADMIN ────────────────────────────────────────────────────────
+function toggleAdmin() {
+  if (isAdmin) { exitAdmin(); return; }
+  openPanel('admin-login-panel');
+}
+
+function adminLogin() {
+  var pwd = document.getElementById('admin-pwd').value.trim().toUpperCase();
+  if (pwd !== ADMIN_CODE) { alert('Incorrect password.'); return; }
+  document.getElementById('admin-pwd').value = '';
+  closePanel('admin-login-panel');
+  isAdmin = true;
+  document.getElementById('admin-bar').classList.add('visible');
+  var btn = document.getElementById('admin-nav-btn');
+  btn.classList.add('active');
+  btn.innerHTML = '&#9679; Admin';
+  renderListings();
+  renderRequests();
+}
+
+function exitAdmin() {
+  isAdmin = false;
+  document.getElementById('admin-bar').classList.remove('visible');
+  var btn = document.getElementById('admin-nav-btn');
+  btn.classList.remove('active');
+  btn.textContent = 'Admin';
+  renderListings();
+  renderRequests();
+}
+
+async function adminApprove(id) {
+  if (!confirm('Approve this listing? It will appear publicly on the platform.')) return;
+  var card = document.getElementById('card-' + id);
+  if (card) card.style.opacity = '0.5';
+  var res = await fetchSheet('action=approve&id=' + encodeURIComponent(id));
+  if (!res) { alert('Error. Please try again.'); if (card) card.style.opacity = '1'; return; }
+  await loadData();
+}
+
+async function adminDelete(id, kind) {
+  if (!confirm('Delete this ' + kind + '? This cannot be undone.')) return;
+  var card = document.getElementById('card-' + id);
+  if (card) card.style.opacity = '0.5';
+  var res = await fetchSheet('action=remove&id=' + encodeURIComponent(id));
+  if (!res) { alert('Error. Please try again.'); if (card) card.style.opacity = '1'; return; }
+  await loadData();
+}
+
+function openEdit(id) {
+  var l = allListings.find(function(x){ return String(x.id) === String(id); });
+  if (!l) return;
+  document.getElementById('edit-id').value       = id;
+  document.getElementById('edit-room').value     = l.room || '';
+  document.getElementById('edit-from').value     = l.from || '';
+  document.getElementById('edit-to').value       = l.to || '';
+  document.getElementById('edit-price').value    = l.price || '';
+  document.getElementById('edit-features').value = l.features || '';
+  document.getElementById('edit-notes').value    = l.notes || '';
+  openPanel('edit-panel');
+}
+
+async function saveEdit() {
+  var id = document.getElementById('edit-id').value;
+  document.getElementById('edit-spinner').style.display = 'block';
+  var params = 'action=edit'
+    + '&id='       + encodeURIComponent(id)
+    + '&from='     + encodeURIComponent(document.getElementById('edit-from').value.trim())
+    + '&to='       + encodeURIComponent(document.getElementById('edit-to').value.trim())
+    + '&price='    + encodeURIComponent(document.getElementById('edit-price').value.trim())
+    + '&features=' + encodeURIComponent(document.getElementById('edit-features').value.trim())
+    + '&notes='    + encodeURIComponent(document.getElementById('edit-notes').value.trim());
+  var res = await fetchSheet(params);
+  document.getElementById('edit-spinner').style.display = 'none';
+  if (!res) { alert('Error saving. Try again.'); return; }
+  closePanel('edit-panel');
+  await loadData();
+}
+
+// ─── PANELS ───────────────────────────────────────────────────────
+function openPanel(id)  { document.getElementById(id).classList.add('open'); }
+function closePanel(id) { document.getElementById(id).classList.remove('open'); }
 function openContact(title, resEmail) {
-  currentContactTitle  = title;
-  currentResidentEmail = resEmail || '';
+  currentContactTitle = title; currentResidentEmail = resEmail || '';
   document.getElementById('contact-title').textContent = title;
   openPanel('contact-panel');
 }
-
-// ─── SUBMIT: ROOM REQUEST ─────────────────────────────────────────
-async function submitContact() {
-  var name  = document.getElementById('c-name').value.trim();
-  var email = document.getElementById('c-email').value.trim();
-  var phone = document.getElementById('c-phone').value.trim();
-  var type  = document.getElementById('c-exchange').value;
-  var msg   = document.getElementById('c-msg').value.trim();
-  if (!name || !email) { alert('Please enter your name and email.'); return; }
-  setLoading('c-btn', 'c-spinner', true);
-  await sendEmail(EJS_TPL_REQUEST, {
-    to_hp_email: HP_EMAIL, to_resident_email: currentResidentEmail,
-    room_info: currentContactTitle, requester_name: name, requester_email: email,
-    requester_phone: phone || 'Not provided', requester_type: type || 'Not specified',
-    requester_message: msg || '(no message)',
-  });
-  await logToSheet({ type:'request', room_info:currentContactTitle, requester_name:name, requester_email:email, requester_phone:phone||'', requester_type:type||'', requester_message:msg||'' });
-  setLoading('c-btn', 'c-spinner', false);
-  closePanel('contact-panel');
-  showSuccess('Request sent!', 'The House President and the room\'s resident have been notified automatically. You\'ll hear back soon.');
+function showSuccess(title, sub) {
+  document.getElementById('success-title').textContent = title;
+  document.getElementById('success-sub').textContent = sub;
+  openPanel('success-panel');
+}
+function setLoading(b, s, on) {
+  document.getElementById(b).disabled = on;
+  document.getElementById(s).style.display = on ? 'block' : 'none';
 }
 
-// ─── SUBMIT: SEARCH POST ──────────────────────────────────────────
+// ─── EMAIL ────────────────────────────────────────────────────────
+async function sendEmail(tpl, params) {
+  try { await emailjs.send(EJS_SERVICE_ID, tpl, params); }
+  catch(e) { console.error('EmailJS error:', e); }
+}
+
+// ─── SUBMIT: CONTACT ──────────────────────────────────────────────
+async function submitContact() {
+  var name=document.getElementById('c-name').value.trim(), email=document.getElementById('c-email').value.trim();
+  var phone=document.getElementById('c-phone').value.trim(), type=document.getElementById('c-exchange').value;
+  var msg=document.getElementById('c-msg').value.trim();
+  if (!name||!email){alert('Please enter your name and email.');return;}
+  setLoading('c-btn','c-spinner',true);
+  await sendEmail(EJS_TPL_REQUEST,{to_hp_email:HP_EMAIL,to_resident_email:currentResidentEmail,room_info:currentContactTitle,requester_name:name,requester_email:email,requester_phone:phone||'Not provided',requester_type:type||'Not specified',requester_message:msg||'(no message)'});
+  await logToSheet({type:'request',room_info:currentContactTitle,requester_name:name,requester_email:email,requester_phone:phone||'',requester_type:type||'',requester_message:msg||''});
+  setLoading('c-btn','c-spinner',false);
+  closePanel('contact-panel');
+  showSuccess('Request sent!','The House President and the resident have been notified. You\'ll hear back soon.');
+}
+
+// ─── SUBMIT: SEARCH ───────────────────────────────────────────────
 async function submitSearch() {
-  var name   = document.getElementById('s-name').value.trim();
-  var email  = document.getElementById('s-email').value.trim();
-  var from   = document.getElementById('s-from').value;
-  var to     = document.getElementById('s-to').value;
-  var type   = document.getElementById('s-type').value;
-  var budget = document.getElementById('s-budget').value;
-  var note   = document.getElementById('s-note').value.trim();
-  if (!name || !email) { alert('Please enter your name and email.'); return; }
-  setLoading('s-btn', 's-spinner', true);
-  await sendEmail(EJS_TPL_REQUEST, {
-    to_hp_email: HP_EMAIL, to_resident_email: '',
-    room_info: 'New room search posted on ZB Room Exchange',
-    requester_name: name, requester_email: email, requester_phone: 'N/A',
-    requester_type: type + ' \u00b7 $' + (budget||'?') + '/mo \u00b7 ' + (from||'?') + ' to ' + (to||'?'),
-    requester_message: note || '(no additional notes)',
-  });
-  await logToSheet({ type:'request', room_info:'Room search', requester_name:name, requester_email:email, requester_phone:'N/A', requester_type:type+' · $'+(budget||'?')+'/mo', requester_message:note||'' });
-  setLoading('s-btn', 's-spinner', false);
+  var name=document.getElementById('s-name').value.trim(), email=document.getElementById('s-email').value.trim();
+  var from=document.getElementById('s-from').value, to=document.getElementById('s-to').value;
+  var type=document.getElementById('s-type').value, budget=document.getElementById('s-budget').value;
+  var note=document.getElementById('s-note').value.trim();
+  if (!name||!email){alert('Please enter your name and email.');return;}
+  setLoading('s-btn','s-spinner',true);
+  await sendEmail(EJS_TPL_REQUEST,{to_hp_email:HP_EMAIL,to_resident_email:'',room_info:'New search on ZB Room Exchange',requester_name:name,requester_email:email,requester_phone:'N/A',requester_type:type+' · $'+(budget||'?')+'/mo · '+(from||'?')+' to '+(to||'?'),requester_message:note||'(none)'});
+  await logToSheet({type:'request',room_info:'Room search',requester_name:name,requester_email:email,requester_phone:'N/A',requester_type:type+' · $'+(budget||'?')+'/mo',requester_message:note||''});
+  setLoading('s-btn','s-spinner',false);
   closePanel('search-panel');
-  document.getElementById('sn-req').textContent = parseInt(document.getElementById('sn-req').textContent) + 1;
-  showSuccess('Search posted!', 'ZB residents with available rooms will be able to see your profile and reach out to you.');
+  showSuccess('Search posted!','ZB residents with available rooms will see your profile and reach out.');
+  await loadData();
 }
 
 // ─── RESIDENT LOGIN ───────────────────────────────────────────────
 function residentLogin() {
-  var room = document.getElementById('l-room').value;
-  var code = document.getElementById('l-code').value.trim().toUpperCase();
-  if (!room) { alert('Please select your room number.'); return; }
-  if (code !== RESIDENT_CODE) { alert('Incorrect code. Contact the House President to get it.'); return; }
+  var room=document.getElementById('l-room').value;
+  var code=document.getElementById('l-code').value.trim().toUpperCase();
+  if (!room){alert('Please select your room.');return;}
+  if (code!==RESIDENT_CODE){alert('Incorrect code. Contact the House President.');return;}
   closePanel('login-panel');
-  currentRoomInfo = room.split('&#8212;')[0].replace(/\u2014/g,'').trim();
-  // fallback split on em-dash character
-  if (currentRoomInfo === room) currentRoomInfo = room.split('\u2014')[0].trim();
+  currentRoomInfo = room.split('—')[0].trim();
   document.getElementById('post-room-label').textContent = currentRoomInfo;
   openPanel('post-panel');
 }
 
-// ─── SUBMIT: NEW LISTING ──────────────────────────────────────────
+// ─── SUBMIT: LISTING ──────────────────────────────────────────────
 async function submitPost() {
-  var resName  = document.getElementById('p-res-name').value.trim();
-  var resEmail = document.getElementById('p-res-email').value.trim();
-  var resPhone = document.getElementById('p-res-phone').value.trim();
-  var from     = document.getElementById('p-from').value;
-  var to       = document.getElementById('p-to').value;
-  var price    = document.getElementById('p-price').value;
-  var notes    = document.getElementById('p-notes').value.trim();
-  if (!resName || !resEmail) { alert('Please enter your name and notification email.'); return; }
-  if (!from || !price) { alert('Please fill in the dates and monthly price.'); return; }
-  var tags = Array.from(document.querySelectorAll('#tag-picker .chip.on')).map(function(b) { return b.textContent; }).join(', ');
-  setLoading('p-btn', 'p-spinner', true);
-  await sendEmail(EJS_TPL_LISTING, {
-    to_hp_email: HP_EMAIL, resident_name: resName, resident_email: resEmail,
-    resident_phone: resPhone || 'Not provided', room_number: currentRoomInfo,
-    available_from: from, available_to: to || 'Not specified',
-    monthly_price: '$' + price, room_features: tags || 'None selected', room_notes: notes || '(none)',
-  });
-  await logToSheet({ type:'listing', room_number:currentRoomInfo, resident_name:resName, resident_email:resEmail, resident_phone:resPhone||'', available_from:from, available_to:to||'', monthly_price:'$'+price, room_features:tags||'', room_notes:notes||'' });
-  setLoading('p-btn', 'p-spinner', false);
+  var resName=document.getElementById('p-res-name').value.trim(), resEmail=document.getElementById('p-res-email').value.trim();
+  var resPhone=document.getElementById('p-res-phone').value.trim(), from=document.getElementById('p-from').value;
+  var to=document.getElementById('p-to').value, price=document.getElementById('p-price').value;
+  var notes=document.getElementById('p-notes').value.trim();
+  if (!resName||!resEmail){alert('Please enter your name and email.');return;}
+  if (!from||!price){alert('Please fill in dates and price.');return;}
+  var tags=Array.from(document.querySelectorAll('#tag-picker .chip.on')).map(function(b){return b.textContent;}).join(', ');
+  setLoading('p-btn','p-spinner',true);
+  await sendEmail(EJS_TPL_LISTING,{to_hp_email:HP_EMAIL,resident_name:resName,resident_email:resEmail,resident_phone:resPhone||'Not provided',room_number:currentRoomInfo,available_from:from,available_to:to||'Not specified',monthly_price:'$'+price,room_features:tags||'None selected',room_notes:notes||'(none)'});
+  await logToSheet({type:'listing',room_number:currentRoomInfo,resident_name:resName,resident_email:resEmail,resident_phone:resPhone||'',available_from:from,available_to:to||'',monthly_price:'$'+price,room_features:tags||'',room_notes:notes||''});
+  setLoading('p-btn','p-spinner',false);
   closePanel('post-panel');
-  document.getElementById('sn-open').textContent = parseInt(document.getElementById('sn-open').textContent) + 1;
-  showSuccess('Listing submitted!', 'Your room is under review. The House President will approve it shortly. You\'ll be notified at ' + resEmail + '.');
+  showSuccess('Listing submitted!','The House President will review and approve it. You\'ll be notified at '+resEmail+'.');
+  await loadData();
 }
 
-// ─── ADMIN ────────────────────────────────────────────────────────
-function adminLogin() {
-  var pwd = document.getElementById('admin-pwd').value.trim().toUpperCase();
-  if (pwd !== ADMIN_CODE) { alert('Incorrect password.'); return; }
-  closePanel('admin-login-panel');
-  document.getElementById('admin-pwd').value = '';
-  openPanel('admin-panel');
-  loadAdminData();
+// ─── HELPERS ──────────────────────────────────────────────────────
+function fmtDate(d) {
+  if (!d) return '';
+  var s = String(d);
+  if (s.indexOf('T') !== -1) return new Date(s).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  if (s.match(/^\d{4}-\d{2}-\d{2}$/)) return new Date(s+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  return s;
 }
-
-function adminTab(el, sectionId) {
-  document.querySelectorAll('.admin-tab').forEach(function(t) { t.classList.remove('on'); });
-  document.querySelectorAll('.admin-section').forEach(function(s) { s.classList.remove('on'); });
-  el.classList.add('on');
-  document.getElementById(sectionId).classList.add('on');
-}
-
-async function loadAdminData() {
-  var ll = document.getElementById('admin-listings-loading');
-  var rl = document.getElementById('admin-requests-loading');
-  ll.style.display = 'block'; ll.textContent = 'Loading listings...';
-  rl.style.display = 'block'; rl.textContent = 'Loading requests...';
-  document.getElementById('admin-listings-body').innerHTML = '';
-  document.getElementById('admin-requests-body').innerHTML = '';
-  var data = await fetchSheet('action=read');
-  if (!data) {
-    ll.textContent = 'Error loading data. Check Apps Script deployment: make sure "Who has access" is set to "Anyone" (not "Anyone with Google account"), then re-deploy as a New Version.';
-    rl.style.display = 'none';
-    return;
-  }
-  renderAdminListings(data.listings || []);
-  renderAdminRequests(data.requests || []);
-}
-
-function renderAdminListings(rows) {
-  document.getElementById('admin-listings-loading').style.display = 'none';
-  var body   = document.getElementById('admin-listings-body');
-  var active = rows.filter(function(r) { return r.status !== 'Deleted'; });
-  if (!active.length) { body.innerHTML = '<div class="admin-empty">No listings yet.</div>'; return; }
-  body.innerHTML = active.map(function(r) {
-    var sc  = r.status === 'Approved' ? 'status-approved' : r.status === 'Deleted' ? 'status-deleted' : 'status-pending';
-    var btn = r.status !== 'Approved'
-      ? '<button class="admin-btn admin-btn-approve" data-action="approve" data-id="' + r.id + '" data-kind="listing">Approve</button>'
-      : '<button class="admin-btn" style="background:var(--bg2);color:var(--text3);cursor:default;" disabled>Approved</button>';
-    return '<div class="admin-row" id="row-' + r.id + '">'
-      + '<div class="admin-info"><div class="admin-title">Room ' + r.room + ' &middot; ' + r.price + '/mo &middot; ' + r.from + ' to ' + r.to + '</div>'
-      + '<div class="admin-meta">' + r.resident_name + ' &middot; ' + r.resident_email + ' &middot; ' + r.resident_phone + '<br>'
-      + 'Features: ' + (r.features || '&mdash;') + '<br>' + (r.notes ? 'Notes: ' + r.notes : '') + '</div>'
-      + '<div style="font-size:11px;color:var(--text3);margin-top:4px;">' + r.timestamp + '</div></div>'
-      + '<span class="admin-status ' + sc + '">' + r.status + '</span>'
-      + '<div class="admin-actions">' + btn
-      + '<button class="admin-btn admin-btn-delete" data-action="delete" data-id="' + r.id + '" data-kind="listing">Delete</button>'
-      + '</div></div>';
-  }).join('');
-}
-
-function renderAdminRequests(rows) {
-  document.getElementById('admin-requests-loading').style.display = 'none';
-  var body   = document.getElementById('admin-requests-body');
-  var active = rows.filter(function(r) { return r.status !== 'Deleted'; });
-  if (!active.length) { body.innerHTML = '<div class="admin-empty">No requests yet.</div>'; return; }
-  body.innerHTML = active.map(function(r) {
-    var sc = r.status === 'Active' ? 'status-active' : 'status-deleted';
-    return '<div class="admin-row" id="row-' + r.id + '">'
-      + '<div class="admin-info"><div class="admin-title">' + r.requester_name + ' &rarr; ' + r.room_info + '</div>'
-      + '<div class="admin-meta">' + r.requester_email + ' &middot; ' + r.requester_phone + '<br>'
-      + 'Type: ' + r.requester_type + '<br>Message: ' + (r.message || '&mdash;') + '</div>'
-      + '<div style="font-size:11px;color:var(--text3);margin-top:4px;">' + r.timestamp + '</div></div>'
-      + '<span class="admin-status ' + sc + '">' + r.status + '</span>'
-      + '<div class="admin-actions"><button class="admin-btn admin-btn-delete" data-action="delete" data-id="' + r.id + '" data-kind="request">Delete</button></div></div>';
-  }).join('');
-}
-
-async function adminAction(action, id, kind) {
-  if (!confirm(action === 'approve' ? 'Approve this listing? It will appear publicly.' : 'Delete this entry? Cannot be undone.')) return;
-  var row = document.getElementById('row-' + id);
-  if (row) row.style.opacity = '0.4';
-  var cmd  = action === 'delete' ? 'remove' : action;
-  var data = await fetchSheet('action=' + cmd + '&id=' + encodeURIComponent(id));
-  if (!data) { alert('Error updating. Please try again.'); if (row) row.style.opacity = '1'; return; }
-  if (action === 'delete') {
-    if (row) row.remove();
-  } else {
-    if (row) {
-      row.querySelector('.admin-status').textContent = 'Approved';
-      row.querySelector('.admin-status').className   = 'admin-status status-approved';
-      var ab = row.querySelector('.admin-btn-approve');
-      if (ab) { ab.textContent = 'Approved'; ab.disabled = true; ab.style.background = 'var(--bg2)'; ab.style.color = 'var(--text3)'; ab.style.cursor = 'default'; }
-      row.style.opacity = '1';
-    }
-  }
-  refreshPublicListings();
-}
-
-async function refreshPublicListings() {
-  var data = await fetchSheet('action=read');
-  if (!data) return;
-  document.getElementById('sn-open').textContent = (data.listings || []).filter(function(l) { return l.status === 'Approved'; }).length;
-  document.getElementById('sn-req').textContent  = (data.requests || []).filter(function(r) { return r.status === 'Active'; }).length;
-}
+function calSVG(){return '<svg viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="2" width="11" height="10" rx="2"/><line x1="4" y1="1" x2="4" y2="3"/><line x1="9" y1="1" x2="9" y2="3"/><line x1="1" y1="6" x2="12" y2="6"/></svg>';}
 
 // ─── INIT ─────────────────────────────────────────────────────────
-document.querySelectorAll('.overlay').forEach(function(o) {
-  o.addEventListener('click', function(e) { if (e.target === o) o.classList.remove('open'); });
+document.querySelectorAll('.overlay').forEach(function(o){
+  o.addEventListener('click',function(e){if(e.target===o)o.classList.remove('open');});
 });
-
-document.addEventListener('click', function(e) {
-  var btn = e.target.closest('[data-action]');
-  if (!btn) return;
-  adminAction(btn.getAttribute('data-action'), btn.getAttribute('data-id'), btn.getAttribute('data-kind'));
-});
-
-renderListings();
-renderSeekers();
-window.addEventListener('load', refreshPublicListings);
+loadData();
 </script>
 </body>
 </html>
